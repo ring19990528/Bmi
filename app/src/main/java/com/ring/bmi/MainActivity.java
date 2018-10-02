@@ -23,6 +23,6 @@ public class MainActivity extends AppCompatActivity {
         float weight = Float.parseFloat(w);
         float height = Float.parseFloat(h);
         float bmi = weight/(height*height);
-        Log.d("MainActivity",bmi+" ");
+        Log.d("MainActivity",bmi+"  ");
     }
 }
