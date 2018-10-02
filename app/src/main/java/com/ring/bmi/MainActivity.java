@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     public void bmi(View view){
-        Log.d("MainActiviyt","bmi");
+        Log.d("MainActivity","bmi");
         EditText edWeight = findViewById(R.id.ed_weight);
         EditText edHeight = findViewById(R.id.ed_height);
         String w = edWeight.getText().toString();
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity",w+"/"+h);
         float weight = Float.parseFloat(w);
         float height = Float.parseFloat(h);
-
+        float bmi = weight/(height*height);
+        Log.d("MainActivity",bmi+" ");
     }
 }
