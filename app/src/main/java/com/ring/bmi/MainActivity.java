@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("MainActivity", "onClick: help");
                 new AlertDialog.Builder(MainActivity.this)
-                        .setMessage("blabla")
-                        .setPositiveButton("OK",null)
+                        .setMessage(R.string.bla)
+                        .setPositiveButton(R.string.ok,null)
                         .show();
             }
         });
@@ -48,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
         float height = Float.parseFloat(h);
         float bmi = weight/(height*height);
         Log.d("MainActivity",bmi+"  ");
-        Toast.makeText(this, "Your Bmi is"+bmi, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.your_bmi)+bmi, Toast.LENGTH_SHORT).show();
         new AlertDialog.Builder(this)
-                .setMessage("Your Bmi is"+bmi)
+                .setMessage(getString(R.string.your_bmi)+bmi)
                 .setTitle("BMI")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         edHeight.setText("");//重置身高與體重
