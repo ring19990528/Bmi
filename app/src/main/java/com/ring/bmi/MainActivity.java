@@ -1,6 +1,7 @@
 package com.ring.bmi;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,10 +18,47 @@ public class MainActivity extends AppCompatActivity {
     private Button help;
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("MainActivity","onStart");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("MainActivity","onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("MainActivity","onDestroy");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("MainActivity","onPause");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("MainActivity","onResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("MainActivity","onRestart");
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findVeiws();
+        Log.d("MainActivity","onCreate");
     }
 
     private void findVeiws() {
@@ -48,17 +86,22 @@ public class MainActivity extends AppCompatActivity {
         float height = Float.parseFloat(h);
         float bmi = weight/(height*height);
         Log.d("MainActivity",bmi+"  ");
-        Toast.makeText(this, getString(R.string.your_bmi)+bmi, Toast.LENGTH_SHORT).show();
-        new AlertDialog.Builder(this)
-                .setMessage(getString(R.string.your_bmi)+bmi)
-                .setTitle("BMI")
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        edHeight.setText("");//重置身高與體重
-                        edWeight.setText("");
-                    }
-                })
-        .show();//跳出確認畫面
+
+        Intent intent = new Intent(this,ResultActivity.class);
+        intent.putExtra("BMI",bmi);
+        startActivity(intent);
+
+//        Toast.makeText(this, getString(R.string.your_bmi)+bmi, Toast.LENGTH_SHORT).show();
+//        new AlertDialog.Builder(this)
+//                .setMessage(getString(R.string.your_bmi)+bmi)
+//                .setTitle("BMI")
+//                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        edHeight.setText("");//重置身高與體重
+//                        edWeight.setText("");
+//                    }
+//                })
+//        .show();//跳出確認畫面
     }
 }
